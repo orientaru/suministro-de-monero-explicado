@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suministro de Monero explicado</title>
+    <script type="text/javascript" src="canvasjs.min.js"></script>
+    <script type="text/javascript" src="supply_calculator.js" defer></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	
+	<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://monerosupply.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/monerosupply.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+</head>
+<body>
+<style>
+    @media only screen and (max-width: 48rem) {
+        body {
+            font-size: 1rem;
+        }
+    }
+
+    body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+		max-width: 100%;
+		overflow-x: hidden;
+    }
+
+    h1, h2 {
+        font-weight: 200;
+        margin: 0 0 0.1em 0;
+    }
+
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .chart-container {
+        height:50vh;
+        width: 100%;
+		margin-bottom: 5vh;
+    }
+
+    .chart {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<header>
+    <h1>Suministro de Monero</h1>
+</header>
+<p>
+    Actualmente hay <span id="current-total-supply"> ... </span> XMR en circulación. Todos fueron entregados a los mineros para incentivarlos a seguir apoyando la red.
+    <br>
+    A diferencia de las recompensas por bloque de Bitcoin, las recompensas por bloque de Monero nunca caerán a cero. En cambio, disminuirán gradualmente hasta que la emisión de cola comience a finales de mayo de 2022. En ese momento, las recompensas se fijarán en 0,6 XMR por bloque.
+    Se crearán aproximadamente 432 XMR al día.
+    <br>
+    Los mineros necesitan un incentivo para minar. Debido al tamaño dinámico de los bloques, la competencia entre mineros hará que las tarifas disminuyan. Si la minería no es rentable debido a un alto coste y una baja recompensa, los mineros pierden su incentivo y dejarán de minar, reduciendo así la seguridad de la red.
+    La emisión de cola garantiza que se pueda desarrollar un sistema de tamaño de bloque dinámico y un mercado de tarifas.
+</p>
+<h2>
+    Suministro total en relación al tiempo
+</h2>
+<div class="chart-container">
+    <div id="chart-total-supply" class="chart"></div>
+</div>
+<h2>
+    Recompensa del bloque en relación al tiempo
+</h2>
+<div class="chart-container">
+    <div id="chart-block-reward" class="chart"></div>
+</div>
+<h2>
+    Inflación oculta y auditabilidad del suministro
+</h2>
+<p>
+    En teoría, el suministro de Monero es auditable sumando todas las recompensas de los bloques de cada bloque. Esto se puede hacer utilizando el comando "print_coinbase_tx_sum".
+    <br>
+    Sin embargo, han surgido preocupaciones sobre posibles fallos de inflación en el codigó base de Monero o en los principios matemáticos subyacentes que podrían ser explotados para generar monedas de la nada. En mayo de 2017, el <i>Monero Research Lab</i> descubrió y parcheó un error crítico que afectaba a Monero y que habría permitido a un atacante crear un número ilimitado de monedas de forma indetectable para un observador, a menos que conozca el fallo y pueda buscarlo.
+    <br>
+    No obstante, se confirmó que este fallo en particular nunca se había utilizado antes en la cadena de bloques de Monero.
+    Puede leer más sobre la auditabilidad del suministro <a href="https://www.getmonero.org/2020/01/17/auditability.html">aquí</a>.
+</p>
+<h2>
+    Información
+</h2>
+<p>
+    Tenga en cuenta que este sitio sólo muestra el suministro en circulación esperado para un fecha determinada. La cantidad real puede ser ligeramente inferior debido a las penalizaciones por el tamaño de los bloques y por los bloques que tardan más de dos (2) minutos para minarse.
+    <br>
+    <a href="https://github.com/xrv0/monero-supply/">Código fuente</a>
+    <span>
+        <br>
+        Donaciones:
+        <br>
+        Bitcoin: bc1qw08twlhudv943w4tagtgvl3xfg6c5uzvnyej82
+        <br>
+        Monero: 84NnKFcLG7XX52GSNDM7niL7ZT7kv5QdRAGMGEqXdGppXZEZ7u26pLR4Lu1tnaARB1i7hLacmipZQjCWNviHA3q254AQjBh
+    </span>
+</p>
+</body>
+</html>
